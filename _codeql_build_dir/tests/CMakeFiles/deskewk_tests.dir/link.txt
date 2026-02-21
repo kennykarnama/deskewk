@@ -1,0 +1,1 @@
+/home/runner/work/deskewk/.codeql-scratch/dbs/cpp/working/autobuild/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/deskewk_tests.dir/link.d CMakeFiles/deskewk_tests.dir/test_deskew.cpp.o -o deskewk_tests  ../libdeskewk_lib.a ../lib/libgtest_main.a ../lib/libgtest.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdeskewk_lib.a CMakeFiles/deskewk_lib.dir/src/deskew.cpp.o
+/usr/bin/ranlib libdeskewk_lib.a
