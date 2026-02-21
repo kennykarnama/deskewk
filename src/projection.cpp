@@ -10,7 +10,17 @@ std::vector<int> horizontal_projection(const unsigned char *img, int width, int 
     std::vector<int> projection(height, 0);
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            projection[y] += img[y * width * channels + x * channels];
+            int idx = y * width * channels + x * channels;
+            bool is_black = true;
+            for (int c = 0; c < channels; ++c) {
+                if (img[idx + c] > 0) {
+                    is_black = false;
+                    break;
+                }
+            }
+            if (is_black) {
+                projection[y]++;
+            }
         }
     }
     
@@ -51,7 +61,17 @@ std::vector<int> vertical_projection(const unsigned char *img, int width, int he
     std::vector<int> projection(width, 0);
     for (int x = 0; x < width; ++x) {
         for (int y = 0; y < height; ++y) {
-            projection[x] += img[y * width * channels + x * channels];
+            int idx = y * width * channels + x * channels;
+            bool is_black = true;
+            for (int c = 0; c < channels; ++c) {
+                if (img[idx + c] > 0) {
+                    is_black = false;
+                    break;
+                }
+            }
+            if (is_black) {
+                projection[x]++;
+            }
         }
     }
     

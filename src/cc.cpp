@@ -26,7 +26,9 @@ std::vector<int> mbr(const unsigned char *img, int width, int height, int channe
             const int idx = (y * width + x) * channels;
             bool foreground = false;
             for (int c = 0; c < channels; ++c) {
-                if (img[idx + c] > 0) {
+                // treat black pixels (0) as foreground (text) since segmentation
+                // produces 0 for foreground and 255 for background
+                if (img[idx + c] == 0) {
                     foreground = true;
                     break;
                 }

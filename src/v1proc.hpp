@@ -6,5 +6,6 @@
 #include "threshold.hpp"
 #include "projection.hpp"
 #include "cc.hpp"
+#include "geotransform.hpp"
 
 #endif

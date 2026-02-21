@@ -26,6 +26,8 @@ add_executable(deskewk
   ${SRC_DIR}/cc.cpp
   ${SRC_DIR}/projection.cpp
   ${SRC_DIR}/threshold.cpp
+  ${SRC_DIR}/geotransform.cpp
+  ${SRC_DIR}/deskew_v1.cpp
 )
 
 target_include_directories(deskewk PRIVATE ${SRC_DIR} ${CMAKE_SOURCE_DIR}/stb ${boost_SOURCE_DIR})
