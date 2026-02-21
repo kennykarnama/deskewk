@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/build/_deps/boost-src/**"
+                "${workspaceFolder}/build/_deps/boost-src/**",
+                "${workspaceFolder}/stb"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

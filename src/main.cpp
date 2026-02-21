@@ -13,8 +13,11 @@ int main(int argc, char** argv) {
     IntermediaryImageOutput intermediaryOpt;
     intermediaryOpt.output_dir = "./processed_images";
     intermediaryOpt.write_rotations = true;
+    intermediaryOpt.write_projections = true;
+    intermediaryOpt.write_bb = true;
+    intermediaryOpt.write_segmented = true;
 
-    double theta = estimated_skew_angle(img, nullptr, width, height, channels, &intermediaryOpt);
+    double theta = estimated_skew_angle(img, width, height, channels, &intermediaryOpt);
     std::cout << "Estimated skew angle: " << theta << " degrees." << std::endl;
 
     unsigned char *deskewed_img = new unsigned char[width * height * channels];
@@ -22,8 +25,6 @@ int main(int argc, char** argv) {
     simple_rotate(img, deskewed_img, width, height, channels, theta);
 
     write_png_image("./deskewed.png", deskewed_img, width, height, channels);
-
-    //delete[] img;
 
     return 0;
 }

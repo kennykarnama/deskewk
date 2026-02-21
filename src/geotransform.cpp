@@ -9,37 +9,31 @@ void simple_rotate(const unsigned char* src, unsigned char *dst, int width, int 
         return;
     }
 
-    // Convert angle to radians
     const double angle_rad = angle * M_PI / 180.0;
     const double cos_angle = std::cos(angle_rad);
     const double sin_angle = std::sin(angle_rad);
 
-    // Calculate center of the image
     const double cx = width / 2.0;
     const double cy = height / 2.0;
 
-    // Initialize output to white (255)
     std::fill(dst, dst + width * height * channels, 255);
 
-    // Apply rotation (backward mapping for better quality)
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            // Translate to origin
+            
             const double x_centered = x - cx;
             const double y_centered = y - cy;
 
-            // Apply inverse rotation
             const double src_x = x_centered * cos_angle + y_centered * sin_angle + cx;
             const double src_y = -x_centered * sin_angle + y_centered * cos_angle + cy;
 
-            // Check bounds
             const int x0 = static_cast<int>(std::floor(src_x));
             const int y0 = static_cast<int>(std::floor(src_y));
             const int x1 = x0 + 1;
             const int y1 = y0 + 1;
 
             if (x0 >= 0 && x1 < width && y0 >= 0 && y1 < height) {
-                // Bilinear interpolation
+                
                 const double fx = src_x - x0;
                 const double fy = src_y - y0;
                 const double fx1 = 1.0 - fx;
