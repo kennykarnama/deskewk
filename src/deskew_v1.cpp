@@ -34,6 +34,11 @@ double estimated_skew_angle(unsigned char *img, int width, int height,
     }
     
     std::cout << "Bounding box for connected components: [x_min: " << bb[0] << ", y_min: " << bb[1] << ", x_max: " << bb[2] << ", y_max: " << bb[3] << "]" << std::endl;
+    if (intermediaryOpt != nullptr && intermediaryOpt->write_bb) {
+        char bb_filename[256];
+        snprintf(bb_filename, sizeof(bb_filename), "%s/bounding_box.png", intermediaryOpt->output_dir);
+        write_mbr_visualization(segmented_img, width, height, channels, bb, bb_filename);
+    }
 
 
     double deg = -10;
@@ -57,6 +62,18 @@ double estimated_skew_angle(unsigned char *img, int width, int height,
                 std::cerr << "Failed to write rotated image: " << filename << std::endl;
             }
         }
+
+        if (intermediaryOpt != nullptr && intermediaryOpt->write_projections) {
+            std::vector<int> verproj = vertical_projection(rotated_img, width, height, channels);
+            
+            char ver_filename[256];
+            snprintf(ver_filename, sizeof(ver_filename), "%s/verproj_%.1f.png", 
+                     intermediaryOpt->output_dir, deg);
+
+            if (write_vertical_projection_image(verproj, height, ver_filename) != 0) {
+                std::cerr << "Failed to write vertical projection: " << ver_filename << std::endl;
+            }
+        }        
         
         std::vector<int> rotated_verproj = vertical_projection(rotated_img, width, height, channels);
         double energy = 0.0;
