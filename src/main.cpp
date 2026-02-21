@@ -23,13 +23,25 @@ int main(int argc, char** argv) {
     std::cout << "segmenting image based on the threshold" << std::endl;
     unsigned char *segmented_img = new unsigned char[width * height];
     segment(img, segmented_img, width, height, channels, thresh);
-    
+
     const char *outpath = argv[2];
     if (write_png_image(outpath, segmented_img, width, height, channels) != 0) {
         std::cerr << "failed to write image to: " << outpath << std::endl;
     }
-    delete[] segmented_img;
 
+    std::vector<int> projection = horizontal_projection(segmented_img, width, height, channels);
+    const char *projection_outpath = argv[3];
+    if (write_horizontal_projection_image(projection, width, projection_outpath) != 0) {
+        std::cerr << "failed to write horizontal projection image to: " << projection_outpath << std::endl;
+    }
+
+    std::vector<int> verticalProjection = vertical_projection(segmented_img, width, height, channels);
+    const char *vertical_projection_outpath = argv[4];
+    if (write_vertical_projection_image(verticalProjection, height, vertical_projection_outpath) != 0) {
+        std::cerr << "failed to write vertical projection image to: " << vertical_projection_outpath << std::endl;
+    }
+
+    delete[] segmented_img;
     delete[] img;
     return 0;
 }
