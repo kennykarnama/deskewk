@@ -1,7 +1,0 @@
-add_test([=[DeskewTest.EmptyImageReturnsZeroAngle]=]  /home/runner/work/deskewk/deskewk/_codeql_build_dir/tests/deskewk_tests [==[--gtest_filter=DeskewTest.EmptyImageReturnsZeroAngle]==] --gtest_also_run_disabled_tests)
-set_tests_properties([=[DeskewTest.EmptyImageReturnsZeroAngle]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/deskewk/deskewk/_codeql_build_dir/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
-add_test([=[DeskewTest.HorizontalLineHasNearZeroAngle]=]  /home/runner/work/deskewk/deskewk/_codeql_build_dir/tests/deskewk_tests [==[--gtest_filter=DeskewTest.HorizontalLineHasNearZeroAngle]==] --gtest_also_run_disabled_tests)
-set_tests_properties([=[DeskewTest.HorizontalLineHasNearZeroAngle]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/deskewk/deskewk/_codeql_build_dir/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
-add_test([=[DeskewTest.DeskewPreservesImageSize]=]  /home/runner/work/deskewk/deskewk/_codeql_build_dir/tests/deskewk_tests [==[--gtest_filter=DeskewTest.DeskewPreservesImageSize]==] --gtest_also_run_disabled_tests)
-set_tests_properties([=[DeskewTest.DeskewPreservesImageSize]=]  PROPERTIES WORKING_DIRECTORY /home/runner/work/deskewk/deskewk/_codeql_build_dir/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
-set(  deskewk_tests_TESTS DeskewTest.EmptyImageReturnsZeroAngle DeskewTest.HorizontalLineHasNearZeroAngle DeskewTest.DeskewPreservesImageSize)

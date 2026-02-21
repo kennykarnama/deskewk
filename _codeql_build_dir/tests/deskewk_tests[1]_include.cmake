@@ -1,5 +1,0 @@
-if(EXISTS "/home/runner/work/deskewk/deskewk/_codeql_build_dir/tests/deskewk_tests[1]_tests.cmake")
-  include("/home/runner/work/deskewk/deskewk/_codeql_build_dir/tests/deskewk_tests[1]_tests.cmake")
-else()
-  add_test(deskewk_tests_NOT_BUILT deskewk_tests_NOT_BUILT)
-endif()
