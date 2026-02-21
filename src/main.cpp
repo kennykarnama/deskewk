@@ -41,6 +41,18 @@ int main(int argc, char** argv) {
         std::cerr << "failed to write vertical projection image to: " << vertical_projection_outpath << std::endl;
     }
 
+    std::vector<int> bb = mbr(segmented_img, width, height, channels);
+    if (bb.size() != 4) {
+        std::cerr << "failed to compute bounding box for connected components" << std::endl;
+    }else {
+        std::cout << "Bounding box for connected components: [x_min: " << bb[0] << ", y_min: " << bb[1] << ", x_max: " << bb[2] << ", y_max: " << bb[3] << "]" << std::endl;
+
+        const char *bbox_outpath = argv[5];
+        if (write_mbr_visualization(segmented_img, width, height, channels, bb, bbox_outpath) != 0) {
+            std::cerr << "failed to write bounding box visualization image to: " << bbox_outpath << std::endl;
+        }
+    }
+
     delete[] segmented_img;
     delete[] img;
     return 0;

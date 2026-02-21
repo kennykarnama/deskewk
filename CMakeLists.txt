@@ -5,11 +5,15 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11)
 
+set(FETCHCONTENT_QUIET OFF)
+set(CMAKE_MESSAGE_LOG_LEVEL STATUS)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 include(FetchContent)
 FetchContent_Declare(
   boost
-  GIT_REPOSITORY https://github.com/boostorg/boost.git
-  GIT_TAG boost-1.84.0
+  URL https://archives.boost.io/release/1.90.0/source/boost_1_90_0.tar.gz
+  URL_HASH SHA256=5e93d582aff26868d581a52ae78c7d8edf3f3064742c6e77901a1f18a437eea9
 )
 FetchContent_MakeAvailable(boost)
 

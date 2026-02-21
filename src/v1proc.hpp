@@ -5,5 +5,6 @@
 #include "grayscale.hpp"
 #include "threshold.hpp"
 #include "projection.hpp"
+#include "cc.hpp"
 
 #endif
